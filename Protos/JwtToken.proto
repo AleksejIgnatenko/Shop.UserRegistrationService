@@ -1,0 +1,19 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "Shop.UserRegistrationService";
+
+package greet;
+
+// The greeting service definition.
+service JwtToken {
+  // Sends a greeting
+  rpc GenerateJwtToken(JwtCreationRequest) returns (JwtCreationReply);
+}
+
+message JwtCreationRequest {
+  string id = 1;
+}
+
+message JwtCreationReply {
+  string token = 1;
+}
