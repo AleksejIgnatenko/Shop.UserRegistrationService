@@ -8,14 +8,13 @@ namespace Shop.UserRegistrationService.Services
         public async Task<string> GenerateTokenAsync(Guid id)
         {
             Console.WriteLine(id);
-            // параметр - адрес сервера gRPC
-            using var channel = GrpcChannel.ForAddress("https://localhost:7223");
+            using var channel = GrpcChannel.ForAddress("http://shopjwtproviderservice:9001");
             // создаем клиент
             var client = new JwtToken.JwtTokenClient(channel);
             // создание запроса(для генерации jwt token)
-            JwtCreationRequest request = new JwtCreationRequest { Id = id.ToString() };
+            JwtRequest request = new JwtRequest { Id = id.ToString(), Role = "User" };
             // получение ответа
-            JwtCreationReply response = await client.GenerateJwtTokenAsync(request);
+            JwtReply response = await client.GenerateJwtTokenAsync(request);
             return response.Token;
         }
     }

@@ -7,13 +7,14 @@ package greet;
 // The greeting service definition.
 service JwtToken {
   // Sends a greeting
-  rpc GenerateJwtToken(JwtCreationRequest) returns (JwtCreationReply);
+  rpc GenerateJwtToken(JwtRequest) returns (JwtReply);
 }
 
-message JwtCreationRequest {
+message JwtRequest {
   string id = 1;
+  string role = 2;
 }
 
-message JwtCreationReply {
+message JwtReply {
   string token = 1;
 }
