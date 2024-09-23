@@ -7,9 +7,11 @@ namespace Shop.UserRegistrationService.Services
     public class UserRegistrationServices : IUserRegistrationServices
     {
         private readonly IJwtService _jwtService;
-        public UserRegistrationServices(IJwtService jwtService)
+        private readonly IUserRegistrationRepository _userRegistrationRepository;
+        public UserRegistrationServices(IJwtService jwtService, IUserRegistrationRepository userRegistrationRepository)
         {
             _jwtService = jwtService;
+            _userRegistrationRepository = userRegistrationRepository;
         }
         public async Task<string> UserRegistrationAsync(Guid id, string userName, string email, string telephone, string password)
         {
@@ -17,6 +19,7 @@ namespace Shop.UserRegistrationService.Services
             if (string.IsNullOrEmpty(error))
             {
                 string token = await _jwtService.GenerateTokenAsync(id);
+                Guid userId = await _userRegistrationRepository.CreatingUserRegistrationAsync(user);
                 return token;
             }
             throw new ValidatorException(error);

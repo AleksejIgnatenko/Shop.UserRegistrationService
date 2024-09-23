@@ -21,10 +21,8 @@ namespace Shop.UserRegistrationService.Controllers
         {
             try
             {
-                Console.WriteLine(usersRequest.UserName + " " + usersRequest.Email);
                 var token = await _userRegistrationServices.UserRegistrationAsync(Guid.NewGuid(), usersRequest.UserName, usersRequest.Email, usersRequest.Telephone, usersRequest.Password);
-                //return Ok(token);
-                return Ok(new { message = token });
+                return Ok(token);
             }
             catch (ValidatorException ex)
             {

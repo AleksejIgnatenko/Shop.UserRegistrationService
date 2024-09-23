@@ -7,8 +7,7 @@ namespace Shop.UserRegistrationService.Services
     {
         public async Task<string> GenerateTokenAsync(Guid id)
         {
-            Console.WriteLine(id);
-            using var channel = GrpcChannel.ForAddress("http://shopjwtproviderservice:9001");
+            using var channel = GrpcChannel.ForAddress("http://shopjwtproviderservice:8080");
             // создаем клиент
             var client = new JwtToken.JwtTokenClient(channel);
             // создание запроса(для генерации jwt token)
