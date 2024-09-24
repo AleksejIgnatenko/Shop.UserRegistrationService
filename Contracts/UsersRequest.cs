@@ -4,6 +4,7 @@
         string UserName,
         string Email,
         string Telephone,
-        string Password
+        string Password,
+        string LocationRegistration
         );
 }
