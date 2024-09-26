@@ -21,6 +21,7 @@ builder.Services.AddDbContext<UserRegistrationDbContext>(options =>
 builder.Services.AddScoped<IUserRegistrationServices, UserRegistrationServices>();
 builder.Services.AddScoped<IUserRegistrationRepository, UserRegistrationRepository>();
 builder.Services.AddScoped<IJwtService, JwtService>();
+builder.Services.AddScoped<IPasswordHasherService, PasswordHasherService>();
 
 var app = builder.Build();
 

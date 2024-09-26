@@ -16,7 +16,6 @@ namespace Shop.UserRegistrationService.Repositories
 
         public async Task<Guid> CreatingUserRegistrationAsync(UserRegistrationModel userRegistrationModel)
         {
-            Console.WriteLine(userRegistrationModel.LocationRegistration);
             var userRegistrationEntity = new UserRegistrationEntity
             {
                 Id = userRegistrationModel.Id,
