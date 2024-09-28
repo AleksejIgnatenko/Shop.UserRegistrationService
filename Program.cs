@@ -22,6 +22,7 @@ builder.Services.AddScoped<IUserRegistrationServices, UserRegistrationServices>(
 builder.Services.AddScoped<IUserRegistrationRepository, UserRegistrationRepository>();
 builder.Services.AddScoped<IJwtService, JwtService>();
 builder.Services.AddScoped<IPasswordHasherService, PasswordHasherService>();
+builder.Services.AddScoped<IUserGrpcService, UserGrpcService>();
 
 var app = builder.Build();
 

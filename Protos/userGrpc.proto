@@ -1,0 +1,22 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "Shop.UserRegistrationService";
+
+package greet;
+
+service UserGrpc {
+  rpc CreateUser(UserRequest) returns (UserReply);
+}
+
+message UserRequest {
+  string id = 1;
+  string userName = 2;
+  string email = 3;
+  string telephone = 4;
+  string password = 5;
+  string role = 6;
+}
+
+message UserReply {
+	string id = 1;
+}

@@ -5,7 +5,7 @@ namespace Shop.UserRegistrationService.Services
 {
     public class PasswordHasherService : IPasswordHasherService
     {
-        public async Task<string> GeneratePasswordHash(string password)
+        public async Task<string> GeneratePasswordHashAsync(string password)
         {
             using var chaneel = GrpcChannel.ForAddress("http://ShopPasswordHasherService:8080");
             // Создание клиента клиент
@@ -17,7 +17,7 @@ namespace Shop.UserRegistrationService.Services
             return reply.PasswordHash;
         }
 
-        public async Task<string> VerifyPassword(string password, string hashPassword)
+        public async Task<string> VerifyPasswordAsync(string password, string hashPassword)
         {
             using var chaneel = GrpcChannel.ForAddress("http://ShopPasswordHasherService:8080");
             // Создание клиента клиент

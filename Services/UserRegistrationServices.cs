@@ -9,10 +9,12 @@ namespace Shop.UserRegistrationService.Services
     {
         private readonly IJwtService _jwtService;
         private readonly IUserRegistrationRepository _userRegistrationRepository;
-        public UserRegistrationServices(IJwtService jwtService, IUserRegistrationRepository userRegistrationRepository)
+        private readonly IUserGrpcService _userGrpcService;
+        public UserRegistrationServices(IJwtService jwtService, IUserRegistrationRepository userRegistrationRepository, IUserGrpcService userGrpcService)
         {
             _jwtService = jwtService;
             _userRegistrationRepository = userRegistrationRepository;
+            _userGrpcService = userGrpcService;
         }
         public async Task<string> UserRegistrationAsync(Guid id, string userName, string email, string telephone, string password, 
             UserRole role, string locationRegistration, DateTime DataRegistration)
@@ -22,6 +24,7 @@ namespace Shop.UserRegistrationService.Services
             {
                 string token = await _jwtService.GenerateTokenAsync(id, role);
                 Guid userId = await _userRegistrationRepository.CreatingUserRegistrationAsync(user);
+                Guid createUserId = await _userGrpcService.CreateUserAsync(user);
                 return token;
             }
             throw new ValidatorException(error);

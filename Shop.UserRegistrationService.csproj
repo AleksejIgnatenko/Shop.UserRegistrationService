@@ -10,8 +10,9 @@
   </PropertyGroup>
 
 	<ItemGroup>
-		<Protobuf Include="Protos\JwtToken.proto" GrpcServices="Client" />
+		<Protobuf Include="Protos\jwtToken.proto" GrpcServices="Client" />
 		<Protobuf Include="Protos\passwordHasher.proto" GrpcServices="Client" />
+		<Protobuf Include="Protos\userGrpc.proto" GrpcServices="Client" />
 	</ItemGroup>
 
   <ItemGroup>
