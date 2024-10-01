@@ -19,7 +19,6 @@ namespace Shop.UserRegistrationService.Repositories
             var userRegistrationEntity = new UserRegistrationEntity
             {
                 Id = userRegistrationModel.Id,
-                Email = userRegistrationModel.Email,
                 LocationRegistration = userRegistrationModel.LocationRegistration,
                 DataRegistration = userRegistrationModel.DataRegistration
             };
@@ -36,30 +35,14 @@ namespace Shop.UserRegistrationService.Repositories
             return registeredUsers;
         }
 
-        public async Task<UserRegistrationEntity> GettingByIdUserRegistration(Guid id)
+        public async Task<UserRegistrationEntity> GetByIdUserRegistration(Guid id)
         {
             var registeredUsers = await _context.UserRegistrations.FirstOrDefaultAsync(u => u.Id == id);
-            return registeredUsers;
-        }
-
-        public async Task<Guid> UpdateUserRegistrationAsync(UserRegistrationModel userRegistrationModel)
-        {
-            await _context.UserRegistrations
-                .Where(u => u.Id == userRegistrationModel.Id)
-                .ExecuteUpdateAsync(u => u
-                .SetProperty(u => u.Email, userRegistrationModel.Email)
-                );
-
-            return userRegistrationModel.Id;
-        }
-
-        public async Task<Guid> DeleteUserRegistrationAsync(UserRegistrationModel userRegistrationModel)
-        {
-            await _context.UserRegistrations
-                .Where(u => u.Id == userRegistrationModel.Id)
-                .ExecuteDeleteAsync();
-
-            return userRegistrationModel.Id;
+            if(registeredUsers != null)
+            {
+                return registeredUsers;
+            }
+            throw new Exception("Error retrieving user registration information");
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using Grpc.Net.Client;
 using Shop.UserRegistrationService.Abstractions;
-using Shop.UserRegistrationService.Enum;
+using Shop.UserRegistrationService.Enums;
 
 namespace Shop.UserRegistrationService.Services
 {

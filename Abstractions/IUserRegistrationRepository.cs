@@ -7,8 +7,6 @@ namespace Shop.UserRegistrationService.Abstractions
     {
         Task<Guid> CreatingUserRegistrationAsync(UserRegistrationModel userRegistrationModel);
         Task<List<UserRegistrationEntity>> GetAllUserRegistrations();
-        Task<UserRegistrationEntity> GettingByIdUserRegistration(Guid id);
-        Task<Guid> DeleteUserRegistrationAsync(UserRegistrationModel userRegistrationModel);
-        Task<Guid> UpdateUserRegistrationAsync(UserRegistrationModel userRegistrationModel);
+        Task<UserRegistrationEntity> GetByIdUserRegistration(Guid id);
     }
 }

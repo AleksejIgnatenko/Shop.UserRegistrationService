@@ -2,7 +2,7 @@
 using Shop.UserRegistrationService.Abstractions;
 using Shop.UserRegistrationService.Contracts;
 using Shop.UserRegistrationService.CustomException;
-using Shop.UserRegistrationService.Enum;
+using Shop.UserRegistrationService.Enums;
 
 namespace Shop.UserRegistrationService.Controllers
 {
@@ -29,7 +29,7 @@ namespace Shop.UserRegistrationService.Controllers
                     usersRequest.Telephone,
                     usersRequest.Password,
                     UserRole.User,
-                    usersRequest.LocationRegistration,
+                    HttpContext.Connection.RemoteIpAddress?.ToString() ?? throw new Exception(),
                     DateTime.UtcNow);
 
                 return Ok(token);

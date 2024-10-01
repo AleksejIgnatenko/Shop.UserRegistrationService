@@ -1,5 +1,5 @@
 ﻿using FluentValidation.Results;
-using Shop.UserRegistrationService.Enum;
+using Shop.UserRegistrationService.Enums;
 using Shop.UserRegistrationService.Validation;
 
 namespace Shop.UserRegistrationService.Models

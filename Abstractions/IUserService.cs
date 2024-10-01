@@ -2,7 +2,7 @@
 
 namespace Shop.UserRegistrationService.Abstractions
 {
-    public interface IUserGrpcService
+    public interface IUserService
     {
         Task<Guid> CreateUserAsync(UserRegistrationModel userRegistrationModel);
     }

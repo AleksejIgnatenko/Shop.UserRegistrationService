@@ -1,4 +1,4 @@
-﻿using Shop.UserRegistrationService.Enum;
+﻿using Shop.UserRegistrationService.Enums;
 
 namespace Shop.UserRegistrationService.Abstractions
 {
