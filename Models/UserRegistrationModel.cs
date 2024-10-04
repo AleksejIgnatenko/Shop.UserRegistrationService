@@ -15,6 +15,13 @@ namespace Shop.UserRegistrationService.Models
         public string LocationRegistration {  get; } = string.Empty;
         public DateTime DataRegistration { get; }
 
+        public UserRegistrationModel(Guid id, string locationRegistration, DateTime dataRegistration)
+        {
+            Id = id;
+            LocationRegistration = locationRegistration;
+            DataRegistration = dataRegistration;
+        }
+
         private UserRegistrationModel(Guid id, string userName, string email, string telephone, string password, UserRole role, string locationRegistration, DateTime dataRegistration)
         {
             Id = id;
@@ -25,6 +32,11 @@ namespace Shop.UserRegistrationService.Models
             Role = role;
             LocationRegistration = locationRegistration;
             DataRegistration = dataRegistration;
+        }
+
+        public static UserRegistrationModel Create(Guid id, string locationRegistration, DateTime dataRegistration)
+        {
+            return new UserRegistrationModel(id, locationRegistration, dataRegistration);
         }
 
         public static (UserRegistrationModel user, string error) Create(Guid id, string userName, string email, string telephone, string password, UserRole role, string locationRegistration, DateTime DataRegistration)

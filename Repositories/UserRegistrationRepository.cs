@@ -29,18 +29,31 @@ namespace Shop.UserRegistrationService.Repositories
             return userRegistrationEntity.Id;
         }
 
-        public async Task<List<UserRegistrationEntity>> GetAllUserRegistrations()
+        public async Task<List<UserRegistrationModel>> GetAllUserRegistrationsAsync()
         {
-            var registeredUsers = await _context.UserRegistrations.ToListAsync();
-            return registeredUsers;
+            var userRegistrationEntity = await _context.UserRegistrations.ToListAsync();
+
+            var userRegistrationModel = userRegistrationEntity.Select(u => UserRegistrationModel.Create(
+                u.Id,
+                u.LocationRegistration,
+                u.DataRegistration
+                )).ToList();
+
+            return userRegistrationModel;
         }
 
-        public async Task<UserRegistrationEntity> GetByIdUserRegistration(Guid id)
+        public async Task<UserRegistrationModel> GetByIdUserRegistrationAsync(Guid id)
         {
-            var registeredUsers = await _context.UserRegistrations.FirstOrDefaultAsync(u => u.Id == id);
-            if(registeredUsers != null)
+            var userRegistrationEntity = await _context.UserRegistrations.FirstOrDefaultAsync(u => u.Id == id);
+            if(userRegistrationEntity != null)
             {
-                return registeredUsers;
+                var userRegistrationModel = UserRegistrationModel.Create(
+                userRegistrationEntity.Id,
+                userRegistrationEntity.LocationRegistration,
+                userRegistrationEntity.DataRegistration
+                );
+
+                return userRegistrationModel;
             }
             throw new Exception("Error retrieving user registration information");
         }

@@ -1,4 +1,5 @@
 ﻿using Shop.UserRegistrationService.Enums;
+using Shop.UserRegistrationService.Models;
 
 namespace Shop.UserRegistrationService.Abstractions
 {
@@ -13,5 +14,8 @@ namespace Shop.UserRegistrationService.Abstractions
             UserRole role,
             string locationRegistration,
             DateTime DataRegistration);
+
+        Task<List<UserRegistrationModel>> GetAllUserRegistrationsAsync();
+        Task<UserRegistrationModel> GetByIdUserRegistrationAsync(Guid id);
     }
 }

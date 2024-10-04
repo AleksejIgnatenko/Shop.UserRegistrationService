@@ -31,5 +31,15 @@ namespace Shop.UserRegistrationService.Services
             }
             throw new ValidatorException(error);
         }
+
+        public async Task<List<UserRegistrationModel>> GetAllUserRegistrationsAsync()
+        {
+            return await _userRegistrationRepository.GetAllUserRegistrationsAsync();
+        }
+
+        public async Task<UserRegistrationModel> GetByIdUserRegistrationAsync(Guid id)
+        {
+            return await _userRegistrationRepository.GetByIdUserRegistrationAsync(id);
+        }
     }
 }

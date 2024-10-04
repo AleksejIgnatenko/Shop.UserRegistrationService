@@ -3,6 +3,7 @@ using Shop.UserRegistrationService.Abstractions;
 using Shop.UserRegistrationService.Contracts;
 using Shop.UserRegistrationService.CustomException;
 using Shop.UserRegistrationService.Enums;
+using Shop.UserRegistrationService.Models;
 
 namespace Shop.UserRegistrationService.Controllers
 {
@@ -38,6 +39,20 @@ namespace Shop.UserRegistrationService.Controllers
             {
                 return BadRequest(ex.Message);
             }
+        }
+
+        [HttpGet]
+        [Route("getAllUserRegistrations")]
+        public async Task<ActionResult<List<UserRegistrationModel>>> GetAllUserRegistrationsAsync()
+        {
+            return await _userRegistrationServices.GetAllUserRegistrationsAsync();
+        }
+
+        [HttpGet]
+        [Route("getByIdUserRegistration")]
+        public async Task<ActionResult<UserRegistrationModel>> GetByIdUserRegistrationAsync(Guid id)
+        {
+            return await _userRegistrationServices.GetByIdUserRegistrationAsync(id);
         }
     }
 }
