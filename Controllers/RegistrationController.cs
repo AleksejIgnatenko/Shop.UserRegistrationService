@@ -21,24 +21,17 @@ namespace Shop.UserRegistrationService.Controllers
         [HttpPost]
         public async Task<ActionResult<string>> UserRegistrationAsync([FromBody] UsersRequest usersRequest)
         {
-            try
-            {
-                var token = await _userRegistrationServices.UserRegistrationAsync(
-                    Guid.NewGuid(),
-                    usersRequest.UserName,
-                    usersRequest.Email,
-                    usersRequest.Telephone,
-                    usersRequest.Password,
-                    UserRole.User,
-                    HttpContext.Connection.RemoteIpAddress?.ToString() ?? throw new Exception(),
-                    DateTime.UtcNow);
+            var token = await _userRegistrationServices.UserRegistrationAsync(
+                Guid.NewGuid(),
+                usersRequest.UserName,
+                usersRequest.Email,
+                usersRequest.Telephone,
+                usersRequest.Password,
+                UserRole.User,
+                HttpContext.Connection.RemoteIpAddress?.ToString() ?? throw new Exception(),
+                DateTime.UtcNow);
 
-                return Ok(token);
-            }
-            catch (ValidatorException ex)
-            {
-                return BadRequest(ex.Message);
-            }
+            return Ok(token);
         }
 
         [HttpGet]

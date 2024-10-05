@@ -3,6 +3,7 @@ using Shop.UserRegistrationService.Services;
 using Microsoft.EntityFrameworkCore;
 using Shop.UserRegistrationService;
 using Shop.UserRegistrationService.Repositories;
+using Shop.UserRegistrationService.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -37,6 +38,8 @@ var app = builder.Build();
 
 app.UseSwagger();
 app.UseSwaggerUI();
+
+app.UseMiddleware<ErrorHandlingMiddleware>();
 
 app.UseHttpsRedirection();
 

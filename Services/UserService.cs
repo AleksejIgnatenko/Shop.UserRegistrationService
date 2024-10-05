@@ -1,5 +1,4 @@
 ﻿using Shop.UserRegistrationService.Abstractions;
-using Shop.UserRegistrationService.Contracts;
 using Shop.UserRegistrationService.Dto;
 using Shop.UserRegistrationService.Models;
 
